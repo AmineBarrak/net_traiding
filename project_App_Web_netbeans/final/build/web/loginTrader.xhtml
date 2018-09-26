@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+	   <h:head>
+               <title>Login</title>
+		
+            <h:outputStylesheet library="css" name="normalize.css"/>
+     	 <h:outputStylesheet library="css" name="special-page.css"/>
+
+      
+		   <h:outputStylesheet library="css" name="content.css"/>
+	</h:head>
+	<h:body class="special_page">
+		<div class="top">
+			<div class="gradient"></div>
+			<div class="white"></div>
+			<div class="shadow"></div>
+		</div>
+		<div class="content">
+                      
+						
+			<h1> NetTrading</h1>
+			<div class="background"></div>
+			<div class="wrapper">
+				<div class="box">
+					<div class="header grey">
+                                                 <h:graphicImage library="img" name="icons/lock.png" ></h:graphicImage>
+							
+						<h3>Login</h3>
+					</div>
+                                    
+                                    
+                                    
+					<h:form >
+					   <p:growl id="msgs" showDetail="true" sticky="false" />                        
+                                           <p:panelGrid columns="2" style="width: 400px;" >
+          
+                <h:outputText value="Nom d'utilisateur : "></h:outputText>
+                <p:inputText id="email" value="#{traderController.selected.loginTrader}" required="true" requiredMessage="Tapez votre login!" >
+                </p:inputText>
+                <h:outputText value="Mot de passe : "></h:outputText>
+                <p:password id="password" value="#{traderController.selected.motDePasseTrader}" required="true" requiredMessage="Tapez votre mot de passe!">
+                </p:password>
+                <f:facet name="footer">
+                    <p:commandButton value="Connexion" update="msgs" action="#{traderController.login}" type="submit" icon="ui-icon-check" style="margin-left: 150px !important"></p:commandButton>
+                    </f:facet> 
+            </p:panelGrid>
+        </h:form>
+                                    
+                                    
+
+				</div>
+				<div class="shadow"></div>
+			</div>
+		</div>
+
+	</h:body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActionEditDlg" widgetVar="ActionEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditActionTitle}">
+            <h:form id="ActionEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{actionController.selected != null}">
+                       
+                              <p:outputLabel value="entreprise" for="identreprise" />
+                              <p:selectOneMenu id="identreprise" value="#{actionController.selected.idEntreprise}" >
+                            <f:selectItems value="#{entrepriqueController.itemsAvailableSelectOne}"
+                                           var="identrepriseItem"
+                                           itemValue="#{identrepriseItem}" itemLabel="#{identrepriseItem.nomEntreprise}"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="#{bundle.EditActionLabel_valeurAction}" for="valeurAction" />
+                        <p:inputText id="valeurAction" value="#{actionController.selected.valeurAction}" title="#{bundle.EditActionTitle_valeurAction}" />
+                        <p:outputLabel value="#{bundle.EditActionLabel_dateAction}" for="dateAction" />
+                        <p:calendar id="dateAction" pattern="MM/dd/yyyy HH:mm:ss" value="#{actionController.selected.dateAction}" title="#{bundle.EditActionTitle_dateAction}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditActionLabel_nbrot}" for="nbrot" />
+                        <p:inputText id="nbrot" value="#{actionController.selected.nbrot}" title="#{bundle.EditActionTitle_nbrot}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{actionController.update}" value="#{bundle.Save}" update="display,:ActionListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ActionEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ActionEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

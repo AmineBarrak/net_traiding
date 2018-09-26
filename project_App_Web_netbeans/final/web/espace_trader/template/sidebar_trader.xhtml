@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <aside >
+            
+					<div id="sidebar_top">
+						<div class="userinfo">
+							<div class="info">
+								<div class="avatar">
+                                                                    <h:graphicImage library="img" name="sprites/userinfo/avatar.png" ></h:graphicImage>
+								</div>
+								<a href="#">3 Messages</a>
+							</div>
+							<ul class="links">
+								<li>
+									<strong><a href="#"><h:outputText value="#{sessionTrader.nomTrader} #{sessionTrader.prenomTrader}"></h:outputText></a></strong>
+								</li>
+								<li>
+									<a href="#">Configuration</a>
+								</li>
+                                                            <li><h:form>
+									<p:commandLink id="btndeconnecter" style="font-size:14px" actionListener="#{traderController.logout}"> 
+                                                                                       <h:outputText value="Déconnecter" />  
+                                                                                </p:commandLink> 
+								</h:form>
+                                                                            </li>
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div id="sidebar_content">
+						<h2>Information</h2>
+						<p>
+							Lorem ipsum dolor sit amet,
+							consectetur adipisicing elit, sed do
+							eiusmod tempor incididunt ut labore
+							et dolore magna aliqua.
+						</p>
+						<div class="divider"></div>
+						
+					</div>
+				</aside>
+  </ui:composition>
+
+</html>

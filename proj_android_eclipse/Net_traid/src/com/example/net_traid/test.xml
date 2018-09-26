@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <actions>
+<action>
+<dateAction>2014-12-10T00:00:00+01:00</dateAction>
+<idAction>1</idAction>
+<idEntreprise>
+<adresseEntreprise>sdfs</adresseEntreprise>
+<idEntreprise>1</idEntreprise>
+<nomEntreprise>fsd</nomEntreprise>
+<numEntreprise>1</numEntreprise>
+<teleEntreprise>21212</teleEntreprise>
+</idEntreprise>
+<nbrot>72</nbrot>
+<valeurAction>10</valeurAction>
+</action>
+<action>
+<dateAction>2014-12-09T00:00:00+01:00</dateAction>
+<idAction>2</idAction>
+<idEntreprise>
+<adresseEntreprise>tunis beb el khadhra</adresseEntreprise>
+<idEntreprise>2</idEntreprise>
+<nomEntreprise>tunisiana</nomEntreprise>
+<teleEntreprise>45856937</teleEntreprise>
+</idEntreprise>
+<nbrot>2000</nbrot>
+<valeurAction>41</valeurAction>
+</action>
+</actions>

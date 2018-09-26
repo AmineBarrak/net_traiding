@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/espace_trader/template/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEntrepriseTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+              <h1>Liste des entreprises</h1>
+            <h:form id="EntrepriseListForm">
+              
+                    <p:dataTable id="datalist" value="#{entrepriseController.items}" var="item"
+                                 selectionMode="single" selection="#{entrepriseController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.identreprise}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                      
+                    
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriseTitle_nom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriseTitle_telephone}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telephone}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriseTitle_adresse}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresse}"/>
+                        </p:column>
+              
+                     
+                     
+                    
+                    </p:dataTable>
+             
+            </h:form>
+
+      
+                 
+            <script> $('#entreprise').addClass('current');</script>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+		<article class="col1">
+			<div class="pad_1">
+                            <h2 style="color: #7a9cc0">Client</h2>
+   		<div id="sidebar_top" style="margin-bottom:10px;width: 235px">
+						<div class="userinfo">
+							<div class="info">
+								<div class="avatar">
+                                                                    <h:graphicImage library="img" name="sprites/userinfo/avatar.png" ></h:graphicImage>
+								</div>
+								<a href="#" style="font-size:11px"></a>
+							</div>
+							<ul class="links">
+								<li>
+									<strong><a href="#"><h:outputText value="#{sessionClient.nomClient}"></h:outputText></a></strong>
+								</li>
+								<li>
+									<a href="profil.xhtml" style="font-size:14px">Profil</a>
+								</li>
+								<li>
+									     <h:form>
+                                                                          <p:commandLink id="btndeconnecter" style="font-size:14px" actionListener="#{clientController.logout}" >  
+                                                                             <h:outputText value="Déconnecter" />  
+                                                                                </p:commandLink> 
+                                                                    </h:form>
+								</li>
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+                            <br /><p style="font-size:0.8em">
+				<h2 style="color: #7a9cc0">Contact</h2>
+                                <p class="under">Téléphone: <h:outputText value="#{parametreController.param().tel}"/></p>
+				<p class="under">Adresse: <h:outputText value="#{parametreController.param().adresseentreprise}"/></p>
+                                <p class="under">Fax: <h:outputText value="#{parametreController.param().fax}"/></p>
+                                <p class="under">E-mail: <h:outputText value="#{parametreController.param().email}"/></p>
+                            </p>
+                        </div>
+		</article>
+        </ui:composition>
+</html>

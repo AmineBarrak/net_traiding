@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdreEditDlg" widgetVar="OrdreEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditOrdreTitle}">
+            <h:form id="OrdreEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordreController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_idOrdre}" for="idOrdre" />
+                        <p:inputText id="idOrdre" value="#{ordreController.selected.idOrdre}" title="#{bundle.EditOrdreTitle_idOrdre}" required="true" requiredMessage="#{bundle.EditOrdreRequiredMessage_idOrdre}"/>
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_idAction}" for="idAction" />
+                        <p:inputText id="idAction" value="#{ordreController.selected.idAction}" title="#{bundle.EditOrdreTitle_idAction}" required="true" requiredMessage="#{bundle.EditOrdreRequiredMessage_idAction}"/>
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_idClient}" for="idClient" />
+                        <p:inputText id="idClient" value="#{ordreController.selected.idClient}" title="#{bundle.EditOrdreTitle_idClient}" required="true" requiredMessage="#{bundle.EditOrdreRequiredMessage_idClient}"/>
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_dateOrdre}" for="dateOrdre" />
+                        <p:calendar id="dateOrdre" pattern="MM/dd/yyyy HH:mm:ss" value="#{ordreController.selected.dateOrdre}" title="#{bundle.EditOrdreTitle_dateOrdre}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_nbAction}" for="nbAction" />
+                        <p:inputText id="nbAction" value="#{ordreController.selected.nbAction}" title="#{bundle.EditOrdreTitle_nbAction}" />
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_typeOrdre}" for="typeOrdre" />
+                        <p:inputText id="typeOrdre" value="#{ordreController.selected.typeOrdre}" title="#{bundle.EditOrdreTitle_typeOrdre}" />
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_dateExecution}" for="dateExecution" />
+                        <p:calendar id="dateExecution" pattern="MM/dd/yyyy HH:mm:ss" value="#{ordreController.selected.dateExecution}" title="#{bundle.EditOrdreTitle_dateExecution}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditOrdreLabel_etatOrdre}" for="etatOrdre" />
+                        <p:inputText id="etatOrdre" value="#{ordreController.selected.etatOrdre}" title="#{bundle.EditOrdreTitle_etatOrdre}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ordreController.update}" value="#{bundle.Save}" update="display,:OrdreListForm:datalist,:growl" oncomplete="handleSubmit(args, 'OrdreEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="OrdreEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

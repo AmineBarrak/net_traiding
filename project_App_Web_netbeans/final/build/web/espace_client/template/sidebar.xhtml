@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+<article class="col1">
+			<div class="pad_1">
+                            <h2 style="color: #7a9cc0">Connexion</h2>
+   				<h:form id="loginForm">
+					   <p:growl id="msgs" showDetail="true" sticky="false"  />                        
+                                           <p:panelGrid columns="2" style="width: 240px;">
+          
+                <h:outputText value="Login : "></h:outputText>
+                <p:inputText id="email" value="#{clientController.selected.loginClient}" required="true" requiredMessage="Tapez votre email!" >
+                </p:inputText>
+                <h:outputText value="Mot de passe : "></h:outputText>
+                <p:password id="password" value="#{clientController.selected.motDePasseClient}" required="true" requiredMessage="Tapez votre mot de passe!">
+                </p:password>
+                <f:facet name="footer">
+                 <p:commandButton value="Connexion" update="msgs" actionListener="#{clientController.login}" type="submit" icon="ui-icon-check" style="margin:0"></p:commandButton>
+                    </f:facet> 
+            </p:panelGrid>
+        </h:form>
+                               <br />
+				<h2 style="color: #7a9cc0">Contact</h2>
+				<p class="under">Portable: (+216) 71 95 12 48</p>
+				<p class="under">Fixe: (+216) 71 95 10 44</p>
+				<p class="under">Adresse: R 8368 - Bloc A - tunis - Tunisie</p>
+                                <p class="under">Fax:	 00 216 71 79 40 41</p>
+                                <p class="under">E-mail:	contact@nettrading.com.tn</p>
+			</div>
+		</article>
+        </ui:composition>
+</html>

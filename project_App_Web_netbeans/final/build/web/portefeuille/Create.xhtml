@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PortefeuilleCreateDlg" widgetVar="PortefeuilleCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePortefeuilleTitle}">
+            <h:form id="PortefeuilleCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{portefeuilleController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_idPf}" for="idPf" />
+                        <p:inputText id="idPf" value="#{portefeuilleController.selected.idPf}" title="#{bundle.CreatePortefeuilleTitle_idPf}" required="true" requiredMessage="#{bundle.CreatePortefeuilleRequiredMessage_idPf}"/>
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_idAction}" for="idAction" />
+                        <p:inputText id="idAction" value="#{portefeuilleController.selected.idAction}" title="#{bundle.CreatePortefeuilleTitle_idAction}" required="true" requiredMessage="#{bundle.CreatePortefeuilleRequiredMessage_idAction}"/>
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_idClient}" for="idClient" />
+                        <p:inputText id="idClient" value="#{portefeuilleController.selected.idClient}" title="#{bundle.CreatePortefeuilleTitle_idClient}" required="true" requiredMessage="#{bundle.CreatePortefeuilleRequiredMessage_idClient}"/>
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_idHisPf}" for="idHisPf" />
+                        <p:inputText id="idHisPf" value="#{portefeuilleController.selected.idHisPf}" title="#{bundle.CreatePortefeuilleTitle_idHisPf}" required="true" requiredMessage="#{bundle.CreatePortefeuilleRequiredMessage_idHisPf}"/>
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_dateOuverture}" for="dateOuverture" />
+                        <p:calendar id="dateOuverture" pattern="MM/dd/yyyy HH:mm:ss" value="#{portefeuilleController.selected.dateOuverture}" title="#{bundle.EditPortefeuilleTitle_dateOuverture}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_valeurTotal}" for="valeurTotal" />
+                        <p:inputText id="valeurTotal" value="#{portefeuilleController.selected.valeurTotal}" title="#{bundle.CreatePortefeuilleTitle_valeurTotal}" />
+                        <p:outputLabel value="#{bundle.CreatePortefeuilleLabel_nbrAction}" for="nbrAction" />
+                        <p:inputText id="nbrAction" value="#{portefeuilleController.selected.nbrAction}" title="#{bundle.CreatePortefeuilleTitle_nbrAction}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{portefeuilleController.create}" value="#{bundle.Save}" update="display,:PortefeuilleListForm:datalist,:growl" oncomplete="handleSubmit(args,'PortefeuilleCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PortefeuilleCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+                <title><ui:insert name="title">Default Title</ui:insert></title>
+                 <h:outputStylesheet library="css" name="jsfcrud.css"/>
+  <h:outputStylesheet library="css" name="client/style.css" />
+    <h:outputStylesheet library="css" name="client/layout.css"/>
+      <h:outputStylesheet library="css" name="client/reset.css"/>
+      <h:outputStylesheet library="css" name="style.css"/>
+      <h:outputStylesheet library="css" name="sidebar.css"/>
+       <h:outputScript library="js" name="submit.js"/>
+           <link rel="icon" type="image/x-icon"  href="#{resource['img:favicon.ico']}"/>
+</h:head>
+    <h:body>
+       <p:growl id="growl" />  
+  <ui:insert name="main_menu" >   
+                 <ui:include src="main_menu.xhtml"/>
+              </ui:insert>
+ <ui:insert name="banner" >   
+                 <ui:include src="banner.xhtml"/>
+              </ui:insert>    
+        <div class="main">
+	<section id="content">
+            <ui:insert name="sidebar" >   
+                 <ui:include src="sidebar.xhtml"/>
+              </ui:insert> 
+      
+            <article class="col2 pad_left1">
+             <ui:insert name="content" >   
+              </ui:insert> 
+        </article>
+          </section>
+        </div>
+           <ui:insert name="footer">   
+                   <ui:include src="footer.xhtml"/>
+              </ui:insert>  
+        
+        
+ <p:ajaxStatus style="width:54px;height:54px;position:fixed;right:45px;bottom:45px;z-index: 300;">  
+    <f:facet name="start">  
+        <p:graphicImage library="img" name="loading.gif" />  
+    </f:facet>  
+ <f:facet name="complete">  
+        <h:outputText value="" />  
+    </f:facet>
+</p:ajaxStatus>  
+             <h:outputScript library="js" name="gmap.js"/>
+             <h:outputScript library="js" name="js.js"/>
+   <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:body>
+    
+</html>

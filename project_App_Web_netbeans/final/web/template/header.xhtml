@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+     
+    
+				<!-- Begin of the header toolbar -->
+				<div id="header_toolbar">
+					<div class="container_12">
+						<h1 class="grid_8">Net-Trading - Site officielle</h1>
+						<!-- Start of right part -->
+						<div class="grid_4">
+							<!-- A small toolbar button -->
+                      
+							
+							<!-- A large toolbar button -->
+							<div class="toolbar_large">
+								<div class="toolbutton">
+                                                                    <div class="toolicon">
+											<h:graphicImage library="img" name="icons/user.png"/>
+                                                                    </div>
+									<div class="toolmenu">
+										<div class="toolcaption" style="min-width: 47px; ">
+                                                                                    <span><h:outputText value="#{sessionAdmin.nomAdmin}"></h:outputText></span>
+										</div>
+										<!-- Start of menu -->
+										<div class="dropdown" style="display: none; ">
+											<ul>
+												<li>
+													<a href="profil.xhtml">Profil</a>
+												</li>
+                                                                                            <li><h:form>
+                                                                                                         <p:commandLink id="deconnexion"  actionListener="#{administrateurController.logout}" >  
+                                                                                                         <h:outputText value="Déconnection" />  
+                                                                                                           </p:commandLink> </h:form>
+												</li>
+											</ul>
+										</div> <!-- End of menu -->
+									</div>
+								</div>
+							</div> <!-- End of large toolbar button -->
+						</div>
+						<!-- End of right part -->
+					</div>
+				</div>
+				<!-- End of the header toolbar -->
+				
+				<!-- Start of the main header bar -->
+				
+		
+    </ui:composition>
+
+</html>

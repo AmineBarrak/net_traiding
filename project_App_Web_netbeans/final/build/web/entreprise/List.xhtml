@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListEntrepriqueTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+              <h1>Liste des entreprises</h1>
+            <h:form id="EntrepriqueListForm">
+           
+                    <p:dataTable id="datalist" value="#{entrepriqueController.items}" var="item"
+                                 selectionMode="single" selection="#{entrepriqueController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idEntreprise}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton editButton deleteButton"/>
+
+                    
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriqueTitle_nomEntreprise}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomEntreprise}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriqueTitle_teleEntreprise}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.teleEntreprise}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEntrepriqueTitle_adresseEntreprise}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresseEntreprise}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{entrepriqueController.prepareCreate}" update=":EntrepriqueCreateForm" oncomplete="PF('EntrepriqueCreateDialog').show()"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":EntrepriqueEditForm" oncomplete="PF('EntrepriqueEditDialog').show()" disabled="#{empty entrepriqueController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{entrepriqueController.destroy}" update=":growl,datalist" disabled="#{empty entrepriqueController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+            
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+        <script> $('#entreprise').addClass('current');</script>
+        </ui:define>
+    </ui:composition>
+
+</html>

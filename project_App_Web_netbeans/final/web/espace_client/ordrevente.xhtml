@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Espace Client"></h:outputText>
+        </ui:define>
+          <ui:define name="sidebar">
+                                     <ui:include src="template/sidebar_logged.xhtml"/>
+        </ui:define>
+          <ui:define name="main_menu">
+                                     <ui:include src="template/main_menu_logged.xhtml"/>
+        </ui:define>
+        <ui:define name="content">
+         
+            <h2>Espace Client</h2>
+          
+            
+            <h3>Les ordres de vente</h3>
+            <h:form id="OrdreListForm">
+              
+                    <p:dataTable id="datalist" value="#{ordreController.ordresVente}" var="item"
+                                 selectionMode="single" selection="#{ordreController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idOrdre}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton editButton"/>
+                        <p:ajax event="rowUnselect" update="createButton editButton"/>
+
+                   
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Action d'entreprise"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAction.idEntreprise.nomEntreprise}"/>
+                        </p:column>
+                      <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_dateOrdre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOrdre}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_nbAction}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbAction}"/>
+                        </p:column>
+                 
+                                       <p:column>
+                            <f:facet name="header">
+                                <h:outputText  value="#{bundle.ListOrdreTitle_etatOrdre}"/>
+                            </f:facet>
+                                           <h:outputText styleClass="#{(item.etatOrdre) eq 'execute' ? 'label-success' : 'label-info'}" value="#{item.etatOrdre}"/>   
+      </p:column>
+                        
+                             <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_dateExecution}"/>
+                            </f:facet>
+                            <h:outputText value="#{(item.etatOrdre) eq 'execute' ? item.dateExecution : '----------------------'}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        
+                        
+                        
+
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{ordreController.prepareCreate}" update=":OrdreCreateForm" oncomplete="PF('OrdreCreateDialog').show()"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":OrdreEditForm" oncomplete="PF('OrdreEditDialog').show()" disabled="#{empty ordreController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+               
+            </h:form>
+
+            <ui:include src="ordrevente/Create.xhtml"/>
+            <ui:include src="ordrevente/Edit.xhtml"/>
+           
+            
+            
+            
+            
+            
+     <script> $('#vente').addClass('menu_active');</script>  
+        </ui:define>
+
+    </ui:composition>
+
+</html>

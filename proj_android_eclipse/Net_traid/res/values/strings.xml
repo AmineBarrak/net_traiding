@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Net_traid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_second">Second</string>
+    <string name="title_activity_action_5_fort_hausse">Action_5_fort_hausse</string>
+    <string name="title_activity_action_5_fort_baisse">Action_5_fort_baisse</string>
+    <string name="title_activity_top_action_plus_vendu">Top_action_plus_vendu</string>
+    <string name="title_activity_top_action_plus_achete">Top_action_plus_achete</string>
+    <string name="title_activity_client_plus_actif_vente">Client_plus_actif_vente</string>
+    <string name="title_activity_cleint_plus_actif_achat">Cleint_plus_actif_achat</string>
+    <string name="title_activity_portefeuil_plus_varie">Portefeuil_plus_varie</string>
+
+</resources>

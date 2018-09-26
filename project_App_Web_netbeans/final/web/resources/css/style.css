@@ -1,0 +1,60 @@
+.ui-widget {
+    font-size: 11.7px !important;
+}
+.ui-layout-north {
+    z-index:20 !important;
+    overflow:visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-datatable-footer .ui-button{
+    float: left;
+ }
+
+   .ui-datatable .ui-state-highlight {
+        background-color: skyblue !important;
+        
+    } 
+    .red{background: #FE5F5F;}
+    .green{background:#a3d9a5;}
+    .rejeter{background:#cc66ff;}
+    
+    
+    .label-info {
+         display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #999999;
+         display: block;
+  margin-bottom: 5px;
+  background-color: #3a87ad;
+  
+}
+
+    .label-success {
+         display: inline-block;
+  padding: 2px 4px;
+  font-size: 11.844px;
+  font-weight: bold;
+  line-height: 14px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color: #999999;
+         display: block;
+  margin-bottom: 5px;
+  background-color: #468847;
+  
+}

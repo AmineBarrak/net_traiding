@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TraderEditDlg" widgetVar="TraderEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTraderTitle}">
+            <h:form id="TraderEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{traderController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTraderLabel_nomTrader}" for="nomTrader" />
+                        <p:inputText id="nomTrader" value="#{traderController.selected.nomTrader}" title="#{bundle.EditTraderTitle_nomTrader}" />
+                        <p:outputLabel value="#{bundle.EditTraderLabel_prenomTrader}" for="prenomTrader" />
+                        <p:inputText id="prenomTrader" value="#{traderController.selected.prenomTrader}" title="#{bundle.EditTraderTitle_prenomTrader}" />
+                        <p:outputLabel value="#{bundle.EditTraderLabel_telephoneTrader}" for="telephoneTrader" />
+                        <p:inputText id="telephoneTrader" value="#{traderController.selected.telephoneTrader}" title="#{bundle.EditTraderTitle_telephoneTrader}" />
+                        <p:outputLabel value="#{bundle.EditTraderLabel_dateRecrutement}" for="dateRecrutement" />
+                        <p:calendar id="dateRecrutement" pattern="MM/dd/yyyy HH:mm:ss" value="#{traderController.selected.dateRecrutement}" title="#{bundle.EditTraderTitle_dateRecrutement}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.EditTraderLabel_grade}" for="grade" />
+                        <p:selectOneMenu id="grade" value="#{traderController.selected.grade}" >
+                            <f:selectItems value="#{traderController.grades}"
+                                           var="idtraderItem"
+                                           itemLabel="#{idtraderItem}"/>
+                        </p:selectOneMenu>
+
+
+
+
+                        <p:outputLabel value="#{bundle.EditTraderLabel_loginTrader}" for="loginTrader" />
+                        <p:inputText id="loginTrader" value="#{traderController.selected.loginTrader}" title="#{bundle.EditTraderTitle_loginTrader}" />
+                        <p:outputLabel value="#{bundle.EditTraderLabel_motDePasseTrader}" for="motDePasseTrader" />
+                        <p:inputText id="motDePasseTrader" type="password" value="#{traderController.selected.motDePasseTrader}" title="#{bundle.EditTraderTitle_motDePasseTrader}" />
+
+
+                    </p:panelGrid>
+                    <h:commandButton actionListener="#{traderController.update()}" value="#{bundle.Save}" />
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TraderEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="OrdreViewDlg" widgetVar="OrdreViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewOrdreTitle}">
+            <h:form id="OrdreViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ordreController.selected != null}">
+                        <h:outputText value="#{bundle.ViewOrdreLabel_idOrdre}"/>
+                        <h:outputText value="#{ordreController.selected.idOrdre}" title="#{bundle.ViewOrdreTitle_idOrdre}"/>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_idAction}"/>
+                        <h:outputText value="#{ordreController.selected.idAction}" title="#{bundle.ViewOrdreTitle_idAction}"/>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_idClient}"/>
+                        <h:outputText value="#{ordreController.selected.idClient}" title="#{bundle.ViewOrdreTitle_idClient}"/>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_dateOrdre}"/>
+                        <h:outputText value="#{ordreController.selected.dateOrdre}" title="#{bundle.ViewOrdreTitle_dateOrdre}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_nbAction}"/>
+                        <h:outputText value="#{ordreController.selected.nbAction}" title="#{bundle.ViewOrdreTitle_nbAction}"/>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_typeOrdre}"/>
+                        <h:outputText value="#{ordreController.selected.typeOrdre}" title="#{bundle.ViewOrdreTitle_typeOrdre}"/>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_dateExecution}"/>
+                        <h:outputText value="#{ordreController.selected.dateExecution}" title="#{bundle.ViewOrdreTitle_dateExecution}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewOrdreLabel_etatOrdre}"/>
+                        <h:outputText value="#{ordreController.selected.etatOrdre}" title="#{bundle.ViewOrdreTitle_etatOrdre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="OrdreViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

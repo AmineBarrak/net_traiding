@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Bienvenue</ui:insert></title>
+           <h:outputStylesheet library="css" name="jsfcrud.css"/>
+            <h:outputStylesheet library="css" name="normalize.css"/>
+         <h:outputStylesheet library="css" name="header.css"/>
+          <h:outputStylesheet library="css" name="footer.css"/>
+           <h:outputStylesheet library="css" name="sidebar.css"/>
+           <h:outputStylesheet library="css" name="typographics.css"/>
+             <h:outputStylesheet library="css" name="fluid.css"/>     
+             <h:outputStylesheet library="css" name="navigation.css"/>
+               
+ <h:outputStylesheet library="css" name="sprites.css"/>
+  <h:outputStylesheet library="css" name="icons.css"/>
+    <h:outputStylesheet library="css" name="content.css"/>
+     <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="non-semantic.helper.classes.css"/>
+        
+              <link rel="icon" type="image/x-icon"  href="#{resource['img:favicon.ico']}"/>
+                <ui:insert name="head" >
+              </ui:insert>
+    </h:head>
+
+    <h:body id="body">
+<p:growl id="growl" />  
+        
+        	<!-- Begin of #height-wrapper -->
+		<div id="height-wrapper">
+			<!-- Begin of header -->
+           <header>
+    <ui:insert name="header" >
+                <ui:include src="header.xhtml"/>
+              </ui:insert>
+               
+            <ui:insert name="main_menu" >   
+                 <ui:include src="menu_trader.xhtml"/>
+              </ui:insert>
+        	</header>
+        <!-- Start of the content -->
+			<div role="main" class="container_12" id="content-wrapper">
+				<!-- Start of the sidebar -->
+        <ui:insert name="sidebar" >
+                  <ui:include src="sidebar_trader.xhtml"/>
+</ui:insert>
+                               
+        <div id="main_content">
+        <ui:insert name="content" >
+                <ui:insert name="body"/>
+         </ui:insert>
+        </div>   
+          
+					
+			</div> <!-- End of #content-wrapper -->
+				
+		</div> <!-- End of #height-wrapper -->
+              
+            
+                <br/>
+          <ui:insert name="footer" >
+                <ui:include src="../../template/footer.xhtml"/>
+          </ui:insert>
+
+
+      
+      
+ <p:ajaxStatus style="width:54px;height:54px;position:fixed;right:45px;bottom:45px;z-index: 300;">  
+    <f:facet name="start">  
+        <p:graphicImage library="img" name="loading.gif" />  
+    </f:facet>  
+ <f:facet name="complete">  
+        <h:outputText value="" />  
+    </f:facet>
+</p:ajaxStatus> 
+                
+                
+                
+                   <h:outputScript library="js" name="plugins.js"/>
+      <h:outputScript library="js" name="script.js"/>
+       <h:outputScript library="js" name="submit.js"/>
+            <h:outputScript library="js" name="jsfcrud.js"/>
+               <h:outputScript library="js" name="jsfcrud.js"/>
+    </h:body>
+
+</html>

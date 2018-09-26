@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:composition template="template/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Espace Conseiller"></h:outputText>
+        </ui:define>
+        <ui:define name="content">
+            
+            <c:if test="#{not empty sessionOrdres}">
+    <h1>Les ordres du client #{sessionOrdres.get(0).idClient.nomClient} #{sessionOrdres.get(0).idClient.prenomClient}</h1>
+            
+</c:if>
+            
+           
+              <h:form id="OrdreListForm">
+              
+                    <p:dataTable id="datalist" value="#{sessionOrdres}" var="item" 
+                                 selection="#{ordreController.selected}" 
+                                 paginator="true"
+                                 rowKey="#{item.idOrdre}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                      
+                   
+                        <p:column >
+                            <f:facet name="header">
+                                <h:outputText value="action d'entreprise"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idAction.idEntreprise.nomEntreprise}"/>
+                        </p:column>
+                       <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_dateOrdre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateOrdre}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_nbAction}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nbAction}"/>
+                        </p:column>
+                  
+                        
+                                       <p:column>
+                            <f:facet name="header">
+                                <h:outputText  value="#{bundle.ListOrdreTitle_etatOrdre}"/>
+                            </f:facet>
+                                           <h:outputText styleClass="#{(item.etatOrdre) eq 'execute' ? 'label-success' : 'label-info'}" value="#{item.etatOrdre}"/>   
+      </p:column>
+
+      
+                             
+                             <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOrdreTitle_dateExecution}"/>
+                            </f:facet>
+                            <h:outputText value="#{(item.etatOrdre) eq 'execute' ? item.dateExecution : '----------------------'}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column> 
+                      
+                        
+                           <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Type d'ordre"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeOrdre}"/>
+                        </p:column>
+                        
+                             <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Executer ordre"/>
+                            </f:facet>
+                                 <p:commandButton id="createButton" icon="ui-icon-plus"   value="Executer" actionListener="#{ordreController.executerOrdreAchat(item)}" disabled="#{item.etatOrdre=='execute'}" update=":OrdreListForm" />
+                        
+                        </p:column>
+                        
+                        
+                    
+                    </p:dataTable>
+               
+            </h:form>
+
+         
+            
+ <script> $('#ordre').addClass('current');</script>
+        </ui:define>
+
+    </ui:composition>
+
+</html>

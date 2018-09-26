@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HistoriqueactionCreateDlg" widgetVar="HistoriqueactionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateHistoriqueactionTitle}">
+            <h:form id="HistoriqueactionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{historiqueactionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateHistoriqueactionLabel_idHistAction}" for="idHistAction" />
+                        <p:inputText id="idHistAction" value="#{historiqueactionController.selected.idHistAction}" title="#{bundle.CreateHistoriqueactionTitle_idHistAction}" required="true" requiredMessage="#{bundle.CreateHistoriqueactionRequiredMessage_idHistAction}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoriqueactionLabel_idAction}" for="idAction" />
+                        <p:inputText id="idAction" value="#{historiqueactionController.selected.idAction}" title="#{bundle.CreateHistoriqueactionTitle_idAction}" required="true" requiredMessage="#{bundle.CreateHistoriqueactionRequiredMessage_idAction}"/>
+                        <p:outputLabel value="#{bundle.CreateHistoriqueactionLabel_typeAction}" for="typeAction" />
+                        <p:inputText id="typeAction" value="#{historiqueactionController.selected.typeAction}" title="#{bundle.CreateHistoriqueactionTitle_typeAction}" />
+                        <p:outputLabel value="#{bundle.CreateHistoriqueactionLabel_dateAction}" for="dateAction" />
+                        <p:calendar id="dateAction" pattern="MM/dd/yyyy HH:mm:ss" value="#{historiqueactionController.selected.dateAction}" title="#{bundle.EditHistoriqueactionTitle_dateAction}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateHistoriqueactionLabel_nouvelleValeur}" for="nouvelleValeur" />
+                        <p:inputText id="nouvelleValeur" value="#{historiqueactionController.selected.nouvelleValeur}" title="#{bundle.CreateHistoriqueactionTitle_nouvelleValeur}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{historiqueactionController.create}" value="#{bundle.Save}" update="display,:HistoriqueactionListForm:datalist,:growl" oncomplete="handleSubmit(args,'HistoriqueactionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="HistoriqueactionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

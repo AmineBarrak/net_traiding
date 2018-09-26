@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TraderHisto" widgetVar="TraderHisto" modal="true" resizable="false" appendTo="@(body)" header="Historique grade">
+ 
+            
+                <h:form id="HistoriquegradeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{traderController.selected != null}">
+
+                        <p:dataTable id="datalist" value="#{traderController.selected.historiquegradeCollection}" var="item"
+                                 selectionMode="single" selection="#{historiquegradeController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.idhistoriquegrade}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                     
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListHistoriquegradeTitle_grade}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.grade}"/>
+                        </p:column>
+                  
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle2.ListHistoriquegradeTitle_dateAffectaion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateAffectaion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </p:column>
+
+            
+                    </p:dataTable>
+                    
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle2.Close}" onclick="HistoriquegradeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+       
+            </p:dialog>
+          </ui:composition>
+</html>
